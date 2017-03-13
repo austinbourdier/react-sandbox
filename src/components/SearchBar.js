@@ -14,8 +14,14 @@ class SearchBar extends React.Component {
       </div>
     );
   }
-
 }
+
+const mapStateToProps = (state) => {
+  return {
+    ...state
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onChange: (event) => {
@@ -25,4 +31,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(null, mapDispatchToProps)(SearchBar);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
