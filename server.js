@@ -13,7 +13,15 @@ const open = require('open');
 let isInitialCompilation = true;
 
 const compiler = webpack(config);
-
+console.log('TESTING')
+console.log('TESTING')
+console.log('TESTING')
+console.log('TESTING')
+console.log(config)
+console.log('TESTING')
+console.log('TESTING')
+console.log('TESTING')
+console.log('TESTING')
 new WebpackDevServer(compiler, config.devServer)
 .listen(process.env.PORT || config.port, 'localhost', (err) => {
   if (err) {
