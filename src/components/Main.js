@@ -9,16 +9,14 @@ import SearchBar from '../components/SearchBar';
 
 class AppComponent extends React.Component {
   render() {
+    console.log(this.props.App)
     const artistsTempArray = this.props.App.artists.slice();
     const artistsChunksArray = [];
     while(artistsTempArray.length > 0) {
-      var chunk = [];
-      var chunkLimit = 3;
-      if(artistsTempArray.length < 3) {
-        chunkLimit = artistsTempArray.length;
-      }
+      const chunk = [];
+      const chunkLimit = artistsTempArray.length < 3 ? artistsTempArray.length : 3;
       for(var i = 0; i < chunkLimit; i++) {
-        chunk.push(artistsTempArray.shift())
+        chunk.push(artistsTempArray.shift());
       }
       artistsChunksArray.push(chunk);
     }

@@ -3,7 +3,6 @@ import ReduxThunk from 'redux-thunk';
 import $ from "jquery";
 
 export function artistsFetched(artists) {
-  console.log(artists)
   return {
     type: constants.ARTISTS_FETCHED,
     artists: artists.items
@@ -11,7 +10,6 @@ export function artistsFetched(artists) {
 }
 
 export function retrieveArtists (text) {
-  console.log(text)
   return (dispatch, getState) => {
     if(text.length) {
       return $.ajax({
@@ -24,7 +22,7 @@ export function retrieveArtists (text) {
         }
       });
     } else {
-      dispatch(artistsFetched([]));
+      dispatch(artistsFetched({items: []}));
     }
   }
 }
