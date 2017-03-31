@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 class ArtistCard extends React.Component {
-  componentWillReceiveProps(nextProps, nextState) {
+  // componentWillReceiveProps(nextProps, nextState) {
     // console.log(nextProps, nextState)
-  }
+  // }
   render() {
     const artist = this.props.artist;
     var artistImage = artist.images[0] ? <img className="img-fluid" src={artist.images[0].url} alt={artist.name}/> : undefined;

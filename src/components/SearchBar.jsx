@@ -4,9 +4,9 @@ import * as actions from '../actions';
 
 
 class SearchBar extends React.Component {
-  componentWillReceiveProps(nextProps, nextState) {
+  // componentWillReceiveProps(nextProps, nextState) {
     // console.log(nextProps, nextState)
-  }
+  // }
   render() {
 
     return (

@@ -13,7 +13,15 @@ const isProd = process.env.NODE_ENV === 'production';
  * Flag indicating whether webpack compiled for the first time.
  * @type {boolean}
  */
+var MongoClient = require('mongodb').MongoClient;
 
+var myCollection;
+var db = MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
+    if(err)
+        throw err;
+    console.log("connected to the mongoDB !");
+    myCollection = db.collection('test_collection');
+});
 
  if (!isProd) {
   let isInitialCompilation = true;
@@ -37,6 +45,8 @@ const isProd = process.env.NODE_ENV === 'production';
         console.log('  \x1b[33mHMR is active\x1b[0m. The bundle will automatically rebuild and live-update on changes.')
       }, 350);
     }
+    console.log(db)
+    console.log(myCollection)
     isInitialCompilation = false;
   });
 } else {
@@ -47,8 +57,11 @@ const isProd = process.env.NODE_ENV === 'production';
   app.use(express.static('dist'));
 
   app.listen(port, ()=> {
-    app.get('*', (req, res)=> {
-      res.sendFile('index.html', { root: 'dist' });
+    app.get('/', (req, res)=> {
+      myCollection.find(function(err, users) {
+        console.log(err, users)
+        res.sendFile('index.html', { root: 'dist', users: users });
+      });
     });
   });
 }
