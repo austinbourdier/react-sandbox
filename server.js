@@ -15,7 +15,7 @@ let isInitialCompilation = true;
 const compiler = webpack(config);
 
 new WebpackDevServer(compiler, config.devServer)
-.listen(config.port, 'localhost', (err) => {
+.listen(process.env.PORT || config.port, 'localhost', (err) => {
   if (err) {
     console.log(err);
   }
