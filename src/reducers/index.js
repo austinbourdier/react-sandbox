@@ -2,17 +2,15 @@ import { combineReducers } from 'redux';
 import * as constants from '../constants/';
 
 let initialState = {
-  data: [],
-  text: ''
+  artists: []
 };
 
 const App = (state = initialState, action) => {
-  console.log(action)
   switch (action.type) {
-    case constants.SEARCH_BAR_TEXT_UPDATED:
+    case constants.ARTISTS_FETCHED:
       return {
        ...state,
-       text: action.text
+       artists: action.artists
       }
     default:
       return state;
