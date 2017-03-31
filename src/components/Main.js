@@ -9,7 +9,6 @@ import SearchBar from '../components/SearchBar';
 
 class AppComponent extends React.Component {
   render() {
-    console.log(this.props.App)
     const artistsTempArray = this.props.App.artists.slice();
     const artistsChunksArray = [];
     while(artistsTempArray.length > 0) {
