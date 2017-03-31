@@ -6,6 +6,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const config = require('./webpack.config');
 const open = require('open');
 const express = require('express');
+const path = require('path');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -43,9 +44,11 @@ const isProd = process.env.NODE_ENV === 'production';
   const app = express();
   const port = process.env.PORT || 3000;
 
+  app.use(express.static('dist'));
+
   app.listen(port, ()=> {
-    app.get('*', function (req, res) {
-      res.send('sup');
+    app.get('*', (req, res)=> {
+      res.sendFile('index.html', { root: 'dist' });
     });
   });
 }
